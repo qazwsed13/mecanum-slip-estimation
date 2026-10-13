@@ -1,0 +1,32 @@
+==========================================================================
+fix_table2_init_row — matched-anchor rerun  device=cuda
+==========================================================================
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:720: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return torch._transformer_encoder_layer_fwd(
+  traj 0: random ev=0.13610  sup5 ev=0.13610  anchors_matched=True  (19s)
+  traj 1: random ev=0.02532  sup5 ev=0.02532  anchors_matched=True  (35s)
+  traj 2: random ev=0.02740  sup5 ev=0.02740  anchors_matched=True  (51s)
+  traj 3: random ev=0.04932  sup5 ev=0.04932  anchors_matched=True  (69s)
+  traj 4: random ev=0.13087  sup5 ev=0.13087  anchors_matched=True  (85s)
+  traj 5: random ev=0.03922  sup5 ev=0.03922  anchors_matched=True  (101s)
+  traj 6: random ev=0.08433  sup5 ev=0.08433  anchors_matched=True  (116s)
+fix_table2_init_row.py:74: RuntimeWarning: Mean of empty slice
+  ev_r.append(np.nanmean(np.abs(sr - tr["s"])[np.abs(tr["s"]) > 0.15]))
+fix_table2_init_row.py:75: RuntimeWarning: Mean of empty slice
+  ev_s.append(np.nanmean(np.abs(ss - tr["s"])[np.abs(tr["s"]) > 0.15]))
+  traj 7: random ev=nan  sup5 ev=nan  anchors_matched=True  (132s)
+  traj 8: random ev=0.03917  sup5 ev=0.03917  anchors_matched=True  (148s)
+  traj 9: random ev=0.09629  sup5 ev=0.09629  anchors_matched=True  (163s)
+  traj10: random ev=0.05019  sup5 ev=0.05019  anchors_matched=True  (179s)
+  traj11: random ev=0.11915  sup5 ev=0.11915  anchors_matched=True  (195s)
+  traj12: random ev=0.16752  sup5 ev=0.16752  anchors_matched=True  (209s)
+  traj13: random ev=0.05102  sup5 ev=0.05102  anchors_matched=True  (223s)
+  traj14: random ev=0.02342  sup5 ev=0.02342  anchors_matched=True  (238s)
+--------------------------------------------------------------------------
+matched-anchor aggregates (test):
+  random-init evMAE=0.0742  allMAE=0.0536  drift=2.04%  posRMSE=0.0070  yaw=0.69
+  sup5-init  evMAE=0.0742  allMAE=0.0536  drift=2.04%  posRMSE=0.0070  yaw=0.69
+  per-traj max |random-sup5| = nan
+saved -> D:\论文\方向1\data\table2_init_matched_v1.npz

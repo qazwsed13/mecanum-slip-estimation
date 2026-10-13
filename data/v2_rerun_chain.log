@@ -1,0 +1,132 @@
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\functional.py:5560: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  attn_output = scaled_dot_product_attention(q, k, v, attn_mask, dropout_p, is_causal)
+==========================================================================
+main method: 5%-label stage1 + physics refinement  device=cuda
+==========================================================================
+  [stage1] attn_sup5.pt trained (10s), val physics loss=0.2820
+  [test] net-only: evMAE=0.1981 allMAE=0.0311 drift=1.91% | refined: evMAE=0.0742 allMAE=0.0536 drift=2.04% (103s)
+  [loco] net-only: evMAE=0.2575 allMAE=0.0411 drift=2.58% | refined: evMAE=0.0922 allMAE=0.0587 drift=3.06% (135s)
+
+==========================================================================
+TEST split summary
+method                    evMAE   allMAE  drift%
+stage1 net only          0.1981   0.0311    1.91
++ physics refine         0.0742   0.0536    2.04
+--------------------------------------------------------------------------
+refs: EKF 0.1252 | sup-cnn 0.1148 | sup-attn 0.1494 | naive 0.2277
+
+saved -> D:\论文\方向1\data\main_method_results_v1.npz
+==========================================================================
+run_ablations v1.0  device=cuda
+==========================================================================
+  [stage1] attn_sup1.pt trained (9s), val physics loss=0.3352
+  [stage1] attn_sup5.pt trained (11s), val physics loss=0.2820
+  [stage1] attn_sup20.pt trained (11s), val physics loss=0.2497
+  [stage1] attn_sup100.pt trained (11s), val physics loss=0.2378
+
+--- A: label fraction curve ---
+A_label_curve f=0.00           evMAE=0.1585 allMAE=0.1457 drift=5.96%
+A_label_curve f=0.01           evMAE=0.1387 allMAE=0.1149 drift=4.64%
+    (108s)
+A_label_curve f=0.05           evMAE=0.0742 allMAE=0.0536 drift=2.04%
+    (108s)
+A_label_curve f=0.20           evMAE=0.0384 allMAE=0.0247 drift=1.29%
+    (107s)
+
+--- B: init source ---
+B_init random                  evMAE=0.0742 allMAE=0.0536 drift=2.04%
+B_init sup100(ref)             evMAE=0.0742 allMAE=0.0536 drift=2.04%
+    (117s)
+
+--- C: hyperparameters (init=sup5, f=0.05) ---
+C_wlab 10                      evMAE=0.0918 allMAE=0.0702 drift=2.67%
+    (127s)
+C_wlab 200                     evMAE=0.0689 allMAE=0.0491 drift=1.87%
+    (118s)
+C_lampr 0.0                    evMAE=0.0762 allMAE=0.0665 drift=2.51%
+    (118s)
+C_lampr 5.0                    evMAE=0.0727 allMAE=0.0375 drift=1.48%
+    (122s)
+C_lamsm 0.3                    evMAE=0.0838 allMAE=0.0793 drift=2.54%
+    (123s)
+C_lamsm 3.0                    evMAE=0.0783 allMAE=0.0370 drift=1.64%
+    (109s)
+
+--- D: noise scan ---
+D_noise x2                     evMAE=0.1121 allMAE=0.1376 drift=5.68%
+    (107s)
+D_noise x3                     evMAE=0.1841 allMAE=0.2188 drift=8.33%
+    (115s)
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\functional.py:5560: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  attn_output = scaled_dot_product_attention(q, k, v, attn_mask, dropout_p, is_causal)
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+
+saved -> D:\论文\方向1\data\ablation_results_v1.npz, fig_preds_v1.npz
+==========================================================================
+run_convergence — stage-2 refinement convergence  device=cuda
+==========================================================================
+selected trajectories (by event amplitude): [3, 11, 5, 6] amps=[0.45, 0.353, 0.352, 0.348]
+  轨迹 ?: 3000 步收敛分析完成 (7s), 末点 evMAE=0.0493
+  轨迹 ?: 3000 步收敛分析完成 (8s), 末点 evMAE=0.1191
+  轨迹 ?: 3000 步收敛分析完成 (8s), 末点 evMAE=0.0392
+  轨迹 ?: 3000 步收敛分析完成 (8s), 末点 evMAE=0.0843
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:720: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return torch._transformer_encoder_layer_fwd(
+
+saved -> D:\论文\方向1\data\convergence_v1.npz
+==========================================================================
+run_multiseed — SCI statistical supplement  device=cuda
+==========================================================================
+  [stage1] attn_sup5_seed42.pt trained (10s), val physics loss=0.2879
+  [seed42 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed42 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 42 done in 258s)
+  [stage1] attn_sup5_seed7.pt trained (11s), val physics loss=0.2820
+  [seed7 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed7 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 7 done in 579s)
+  [stage1] attn_sup5_seed2024.pt trained (65s), val physics loss=0.2873
+  [seed2024 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed2024 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 2024 done in 709s)
+  [stage1] attn_sup5_seed2025.pt trained (11s), val physics loss=0.2840
+  [seed2025 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed2025 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 2025 done in 240s)
+  [stage1] attn_sup5_seed2026.pt trained (13s), val physics loss=0.2807
+  [seed2026 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed2026 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 2026 done in 247s)
+  [stage1] attn_sup1_seed42.pt trained (9s), val physics loss=0.3552
+  [f=0.01 seed42 test refined] evMAE=0.1387 allMAE=0.1149 drift=4.64%  (n=15, ev-n=14)
+  (f=0.01 seed 42 done in 112s)
+  [stage1] attn_sup1_seed2024.pt trained (8s), val physics loss=0.3267
+  [f=0.01 seed2024 test refined] evMAE=0.1387 allMAE=0.1149 drift=4.64%  (n=15, ev-n=14)
+  (f=0.01 seed 2024 done in 114s)
+  [stage1] attn_sup1_seed2025.pt trained (8s), val physics loss=0.3394
+  [f=0.01 seed2025 test refined] evMAE=0.1387 allMAE=0.1149 drift=4.64%  (n=15, ev-n=14)
+  (f=0.01 seed 2025 done in 111s)
+  [stage1] attn_sup20_seed42.pt trained (10s), val physics loss=0.2592
+  [f=0.2 seed42 test refined] evMAE=0.0384 allMAE=0.0247 drift=1.29%  (n=15, ev-n=14)
+  (f=0.2 seed 42 done in 116s)
+  [stage1] attn_sup20_seed2024.pt trained (10s), val physics loss=0.2547
+  [f=0.2 seed2024 test refined] evMAE=0.0384 allMAE=0.0247 drift=1.29%  (n=15, ev-n=14)
+  (f=0.2 seed 2024 done in 110s)
+  [stage1] attn_sup20_seed2025.pt trained (10s), val physics loss=0.2489
+  [f=0.2 seed2025 test refined] evMAE=0.0384 allMAE=0.0247 drift=1.29%  (n=15, ev-n=14)
+  (f=0.2 seed 2025 done in 111s)
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\functional.py:5560: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  attn_output = scaled_dot_product_attention(q, k, v, attn_mask, dropout_p, is_causal)
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+
+saved -> D:\论文\方向1\data\multiseed_results_v1.npz (192 arrays)

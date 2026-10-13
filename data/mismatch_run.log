@@ -1,0 +1,12 @@
+==========================================================================
+run_mismatch — tau_slip mismatch study  device=cuda
+==========================================================================
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:720: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return torch._transformer_encoder_layer_fwd(
+[tau=0.05] refined: evMAE=0.0883 allMAE=0.0546 drift=2.07% (n=15, 100s)
+[tau=0.08] refined: evMAE=0.0742 allMAE=0.0536 drift=2.04% (n=15, 103s)
+[tau=0.12] refined: evMAE=0.0708 allMAE=0.0527 drift=2.02% (n=15, 102s)
+
+saved -> D:\论文\方向1\data\mismatch_results_v1.npz

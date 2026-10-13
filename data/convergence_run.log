@@ -1,0 +1,14 @@
+==========================================================================
+run_convergence — stage-2 refinement convergence  device=cuda
+==========================================================================
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+selected trajectories (by event amplitude): [3, 11, 5, 6] amps=[0.45, 0.353, 0.352, 0.348]
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:720: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return torch._transformer_encoder_layer_fwd(
+  轨迹 ?: 3000 步收敛分析完成 (7s), 末点 evMAE=0.0493
+  轨迹 ?: 3000 步收敛分析完成 (7s), 末点 evMAE=0.1191
+  轨迹 ?: 3000 步收敛分析完成 (7s), 末点 evMAE=0.0392
+  轨迹 ?: 3000 步收敛分析完成 (7s), 末点 evMAE=0.0843
+
+saved -> D:\论文\方向1\data\convergence_v1.npz

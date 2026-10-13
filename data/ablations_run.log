@@ -1,0 +1,53 @@
+==========================================================================
+run_ablations v1.0  device=cuda
+==========================================================================
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\functional.py:5560: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  attn_output = scaled_dot_product_attention(q, k, v, attn_mask, dropout_p, is_causal)
+  [stage1] attn_sup1.pt trained (8s), val physics loss=0.3038
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  [stage1] attn_sup5.pt trained (9s), val physics loss=0.2770
+  [stage1] attn_sup20.pt trained (9s), val physics loss=0.2544
+  [stage1] attn_sup100.pt trained (10s), val physics loss=0.2378
+
+--- A: label fraction curve ---
+A_label_curve f=0.00           evMAE=0.1585 allMAE=0.1457 drift=5.96%
+A_label_curve f=0.01           evMAE=0.1387 allMAE=0.1149 drift=4.64%
+    (224s)
+A_label_curve f=0.05           evMAE=0.0742 allMAE=0.0536 drift=2.04%
+    (109s)
+A_label_curve f=0.20           evMAE=0.0384 allMAE=0.0247 drift=1.29%
+    (275s)
+
+--- B: init source ---
+B_init random                  evMAE=0.0903 allMAE=0.0595 drift=2.67%
+B_init sup100(ref)             evMAE=0.0742 allMAE=0.0536 drift=2.04%
+    (187s)
+
+--- C: hyperparameters (init=sup5, f=0.05) ---
+C_wlab 10                      evMAE=0.0918 allMAE=0.0702 drift=2.67%
+    (134s)
+C_wlab 200                     evMAE=0.0689 allMAE=0.0491 drift=1.87%
+    (452s)
+C_lampr 0.0                    evMAE=0.0762 allMAE=0.0665 drift=2.51%
+    (556s)
+C_lampr 5.0                    evMAE=0.0727 allMAE=0.0375 drift=1.48%
+    (514s)
+C_lamsm 0.3                    evMAE=0.0838 allMAE=0.0793 drift=2.54%
+    (562s)
+C_lamsm 3.0                    evMAE=0.0783 allMAE=0.0370 drift=1.64%
+    (540s)
+
+--- D: noise scan ---
+Traceback (most recent call last):
+  File "run_ablations.py", line 129, in <module>
+    main()
+  File "run_ablations.py", line 115, in main
+    refine_with_init(*nets[0.05], trajs_n, f"D_noise x{mult:.0f}", results)
+  File "run_ablations.py", line 52, in refine_with_init
+    s_list.append(refine_fit(tr, iters=ITERS, w_lab=w_lab, lam_pr=lam_pr,
+  File "D:\论文\方向1\code\sweep_teacher.py", line 54, in fit
+    xi = vhat @ HPD
+RuntimeError: expected mat1 and mat2 to have the same dtype, but got: double != float

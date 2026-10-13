@@ -1,0 +1,49 @@
+==========================================================================
+run_multiseed — SCI statistical supplement  device=cuda
+==========================================================================
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\functional.py:5560: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  attn_output = scaled_dot_product_attention(q, k, v, attn_mask, dropout_p, is_causal)
+  [stage1] attn_sup5_seed42.pt trained (10s), val physics loss=0.2824
+  [seed42 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed42 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 42 done in 242s)
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  [stage1] attn_sup5_seed7.pt trained (9s), val physics loss=0.2770
+  [seed7 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed7 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 7 done in 252s)
+  [stage1] attn_sup5_seed2024.pt trained (10s), val physics loss=0.2830
+  [seed2024 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed2024 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 2024 done in 264s)
+  [stage1] attn_sup5_seed2025.pt trained (10s), val physics loss=0.2737
+  [seed2025 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed2025 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 2025 done in 262s)
+  [stage1] attn_sup5_seed2026.pt trained (11s), val physics loss=0.2819
+  [seed2026 test refined] evMAE=0.0742 allMAE=0.0536 drift=2.04%  (n=15, ev-n=14)
+  [seed2026 loco refined] evMAE=0.0922 allMAE=0.0587 drift=3.06%  (n=20, ev-n=20)
+  (seed 2026 done in 285s)
+  [stage1] attn_sup1_seed42.pt trained (9s), val physics loss=0.3064
+  [f=0.01 seed42 test refined] evMAE=0.1387 allMAE=0.1149 drift=4.64%  (n=15, ev-n=14)
+  (f=0.01 seed 42 done in 117s)
+  [stage1] attn_sup1_seed2024.pt trained (10s), val physics loss=0.3107
+  [f=0.01 seed2024 test refined] evMAE=0.1387 allMAE=0.1149 drift=4.64%  (n=15, ev-n=14)
+  (f=0.01 seed 2024 done in 40953s)
+  [stage1] attn_sup1_seed2025.pt trained (17s), val physics loss=0.3015
+  [f=0.01 seed2025 test refined] evMAE=0.1387 allMAE=0.1149 drift=4.64%  (n=15, ev-n=14)
+  (f=0.01 seed 2025 done in 1745s)
+  [stage1] attn_sup20_seed42.pt trained (8s), val physics loss=0.2641
+  [f=0.2 seed42 test refined] evMAE=0.0384 allMAE=0.0247 drift=1.29%  (n=15, ev-n=14)
+  (f=0.2 seed 42 done in 108s)
+  [stage1] attn_sup20_seed2024.pt trained (9s), val physics loss=0.2597
+  [f=0.2 seed2024 test refined] evMAE=0.0384 allMAE=0.0247 drift=1.29%  (n=15, ev-n=14)
+  (f=0.2 seed 2024 done in 156s)
+  [stage1] attn_sup20_seed2025.pt trained (9s), val physics loss=0.2598
+  [f=0.2 seed2025 test refined] evMAE=0.0384 allMAE=0.0247 drift=1.29%  (n=15, ev-n=14)
+  (f=0.2 seed 2025 done in 118s)
+
+saved -> D:\论文\方向1\data\multiseed_results_v1.npz (192 arrays)

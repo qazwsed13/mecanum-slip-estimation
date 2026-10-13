@@ -1,0 +1,52 @@
+==========================================================================
+run_anchor_sensitivity — M=10 draws, splits=test,loco
+==========================================================================
+  [test] traj1/15 done (77s)
+  [test] traj2/15 done (160s)
+  [test] traj3/15 done (233s)
+  [test] traj4/15 done (310s)
+  [test] traj5/15 done (395s)
+  [test] traj6/15 done (479s)
+  [test] traj7/15 done (562s)
+  [test] traj8/15 done (680s)
+  [test] traj9/15 done (1067s)
+  [test] traj10/15 done (1156s)
+  [test] traj11/15 done (1246s)
+  [test] traj12/15 done (1327s)
+  [test] traj13/15 done (1401s)
+  [test] traj14/15 done (1477s)
+  [test] traj15/15 done (1552s)
+
+[test] 锚点随机化分布: evMAE = 0.0826 ± 0.0128 (M=10); 范围 [0.0619, 0.1052]
+  k=0 (复现论文行): 0.0742
+  逐轨迹跨锚点波动(均值±范围): 0.0319 ± 0.1301
+  [loco] traj1/20 done (74s)
+  [loco] traj2/20 done (156s)
+  [loco] traj3/20 done (225s)
+  [loco] traj4/20 done (324s)
+  [loco] traj5/20 done (397s)
+  [loco] traj6/20 done (476s)
+  [loco] traj7/20 done (564s)
+  [loco] traj8/20 done (652s)
+  [loco] traj9/20 done (740s)
+  [loco] traj10/20 done (829s)
+  [loco] traj11/20 done (917s)
+  [loco] traj12/20 done (1003s)
+  [loco] traj13/20 done (1083s)
+  [loco] traj14/20 done (1161s)
+  [loco] traj15/20 done (1252s)
+  [loco] traj16/20 done (1335s)
+  [loco] traj17/20 done (1417s)
+  [loco] traj18/20 done (1500s)
+  [loco] traj19/20 done (1588s)
+  [loco] traj20/20 done (1676s)
+
+[loco] 锚点随机化分布: evMAE = 0.1014 ± 0.0111 (M=10); 范围 [0.0848, 0.1198]
+  k=0 (复现论文行): 0.0922
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:720: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return torch._transformer_encoder_layer_fwd(
+  逐轨迹跨锚点波动(均值±范围): 0.0393 ± 0.1364
+
+saved -> D:\论文\方向1\data\anchor_sensitivity_v1.npz

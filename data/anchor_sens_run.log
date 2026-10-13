@@ -1,0 +1,52 @@
+==========================================================================
+run_anchor_sensitivity — M=10 draws, splits=test,loco
+==========================================================================
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:720: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return torch._transformer_encoder_layer_fwd(
+  [test] traj1/15 done (84s)
+  [test] traj2/15 done (161s)
+  [test] traj3/15 done (236s)
+  [test] traj4/15 done (312s)
+  [test] traj5/15 done (389s)
+  [test] traj6/15 done (474s)
+  [test] traj7/15 done (552s)
+  [test] traj8/15 done (625s)
+  [test] traj9/15 done (704s)
+  [test] traj10/15 done (778s)
+  [test] traj11/15 done (850s)
+  [test] traj12/15 done (923s)
+  [test] traj13/15 done (1028s)
+  [test] traj14/15 done (1102s)
+  [test] traj15/15 done (1223s)
+
+[test] 锚点随机化分布: evMAE = 0.0826 ± 0.0128 (M=10); 范围 [0.0619, 0.1052]
+  k=0 (复现论文行): 0.0742
+  逐轨迹跨锚点波动(均值±范围): 0.0319 ± 0.1301
+  [loco] traj1/20 done (114s)
+  [loco] traj2/20 done (186s)
+  [loco] traj3/20 done (257s)
+  [loco] traj4/20 done (328s)
+  [loco] traj5/20 done (397s)
+  [loco] traj6/20 done (468s)
+  [loco] traj7/20 done (541s)
+  [loco] traj8/20 done (614s)
+  [loco] traj9/20 done (686s)
+  [loco] traj10/20 done (759s)
+  [loco] traj11/20 done (849s)
+  [loco] traj12/20 done (934s)
+  [loco] traj13/20 done (1014s)
+  [loco] traj14/20 done (1083s)
+  [loco] traj15/20 done (1150s)
+  [loco] traj16/20 done (1218s)
+  [loco] traj17/20 done (1287s)
+  [loco] traj18/20 done (1358s)
+  [loco] traj19/20 done (1437s)
+  [loco] traj20/20 done (1513s)
+
+[loco] 锚点随机化分布: evMAE = 0.1014 ± 0.0111 (M=10); 范围 [0.0848, 0.1198]
+  k=0 (复现论文行): 0.0922
+  逐轨迹跨锚点波动(均值±范围): 0.0393 ± 0.1364
+
+saved -> D:\论文\方向1\data\anchor_sensitivity_v1.npz

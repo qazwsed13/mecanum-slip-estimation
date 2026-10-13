@@ -1,0 +1,29 @@
+==========================================================================
+run_init_confound — evidence for the initialization/anchor confound  device=cuda
+==========================================================================
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+
+[1] 2x2 交叉 (init x 锚点顺序)
+C:\yolov5\Miniconda3\lib\site-packages\torch\nn\modules\transformer.py:720: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return torch._transformer_encoder_layer_fwd(
+  traj0 init=random order=choice_first: evMAE=0.13610 (8s)
+  traj0 init=random order=normal_first: evMAE=0.07254 (8s)
+  traj0 init=sup5   order=choice_first: evMAE=0.13610 (7s)
+  traj0 init=sup5   order=normal_first: evMAE=0.13610 (8s)
+  traj3 init=random order=choice_first: evMAE=0.04932 (8s)
+  traj3 init=random order=normal_first: evMAE=0.08760 (8s)
+  traj3 init=sup5   order=choice_first: evMAE=0.04932 (7s)
+  traj3 init=sup5   order=normal_first: evMAE=0.04932 (8s)
+
+[2] 修正对照: 锚点匹配后 random vs sup5 (15 test trajs)
+  ... traj0 done (random=0.13610, sup5=0.13610)
+  ... traj5 done (random=0.03922, sup5=0.03922)
+  ... traj10 done (random=0.05019, sup5=0.05019)
+
+  random-init:  evMAE=0.0742
+  sup5-init:    evMAE=0.0742
+  逐轨迹最大差异: 0.000006
+  → 锚点匹配后初始化无影响；原 +18% 差异全部来自锚点集合混淆
+
+saved -> D:\论文\方向1\data\init_confound_v1.npz
